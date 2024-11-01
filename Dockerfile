@@ -1,5 +1,4 @@
-ARG VERSION="4.4.1"
-
+ARG VERSION="4.9.1"
 
 
 FROM hairyhenderson/gomplate:v3.11.5-slim AS gomplate
@@ -39,9 +38,9 @@ RUN --mount=type=cache,target=/go/pkg/mod \
 FROM debian:bullseye AS yara
 RUN apt-get update -y && apt-get install -y \
   ca-certificates wget automake libtool make gcc pkg-config libjansson-dev libmagic-dev libssl-dev git
-RUN cd /root && wget https://github.com/VirusTotal/yara/archive/refs/tags/v4.3.2.tar.gz \
-  && tar -zxf v4.3.2.tar.gz \
-  && cd yara-4.3.2 \
+RUN cd /root && wget https://github.com/VirusTotal/yara/archive/refs/tags/v4.5.2.tar.gz \
+  && tar -zxf v4.5.2.tar.gz \
+  && cd yara-4.5.2 \
   && ./bootstrap.sh \
   && ./configure --prefix=/usr/local/yara --disable-dotnet --with-crypto --enable-magic --enable-cuckoo --disable-shared --enable-static\
   && make \
